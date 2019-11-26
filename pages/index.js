@@ -2,6 +2,7 @@ import '../styles/index.css';
 import { useState } from 'react';
 import Modal from '../components/Modal';
 import Input from '../components/Input';
+import Select from '../components/Select';
 
 function Home() {
   const [modalLogin, setModalLogin] = useState(false);
@@ -105,7 +106,11 @@ function Home() {
               <br/>
               <Input placeholder="EMAIL" />
               <br/>
-              <Input placeholder="ESCOLARIDADE" />
+              <Select options={[
+                { value: 'EnsinoFundamental', text: 'Ensino Fundamental' },
+                { value: 'EnsinoMedio', text: 'Ensino Médio' },
+                { value: 'EnsinoSuperior', text: 'Ensino Superior' },
+              ]} />
               <br/>
               <Input placeholder="SENHA" />
               <div className="mt-8 text-center">

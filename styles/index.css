@@ -70,3 +70,7 @@ body {
 .sign-in {
   width: 527px;
 }
+
+select option[data-default] {
+  color: #707070;
+}

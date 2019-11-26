@@ -10,27 +10,27 @@ import posed from 'react-pose';
 
 const Rocket = posed.div({
   visible: { 
-    x: -200, 
+    x: '120%', 
     y: -760,
     transition: {
-      duration: 300,
+      duration: 350,
       ease: 'linear'
     } 
   },
-  hidden: { x: -2000, y: '100%' },
+  hidden: { y: '100%' },
 });
 
 const Mountains = posed.div({
   visible: { 
     x: -50, 
-    y: '110%',
+    y: 100,
     z: 10,
     transition: {
       duration: 300,
       ease: 'linear'
     } 
   },
-  hidden: { x: 0, y: '220%' }
+  hidden: { x: 0, y: '160%' }
 });
 
 function Home() {
@@ -105,7 +105,7 @@ function Home() {
       <Rocket className="rocket absolute" pose={toggled ? 'visible' : 'hidden'}>
         <RocketSvg />
       </Rocket>
-      <Mountains className="rocket absolute" pose={toggled ? 'visible' : 'hidden'}>
+      <Mountains className="mountains absolute" pose={toggled ? 'visible' : 'hidden'}>
         <MountainsSvg />
       </Mountains>
       {/* <div className="mountains"></div> */}

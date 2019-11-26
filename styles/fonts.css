@@ -1,0 +1,111 @@
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-Medium.woff2') format('woff2'),
+    url('/fonts/Helve`ticaNeue-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-CondensedBlack.woff2') format('woff2'),
+    url('/fonts/HelveticaNeue-CondensedBlack.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-CondensedBold.woff2') format('woff2'),
+    url('/fonts/HelveticaNeue-CondensedBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-LightItalic.woff2') format('woff2'),
+    url('/fonts/HelveticaNeue-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue.woff2') format('woff2'),
+    url('/fonts/HelveticaNeue.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-ThinItalic.woff2') format('woff2'),
+    url('/fonts/HelveticaNeue-ThinItalic.woff') format('woff');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-UltraLightItalic.woff2') format('woff2'),
+    url('/fonts/HelveticaNeue-UltraLightItalic.woff') format('woff');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-UltraLight.woff2') format('woff2'),
+    url('/fonts/HelveticaNeue-UltraLight.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-Bold.woff2') format('woff2'),
+    url('/fonts/HelveticaNeue-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-Thin.woff2') format('woff2'),
+    url('/fonts/HelveticaNeue-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-Light.woff2') format('woff2'),
+    url('/fonts/HelveticaNeue-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-Italic.woff2') format('woff2'),
+    url('/fonts/HelveticaNeue-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-MediumItalic.woff2') format('woff2'),
+    url('/fonts/HelveticaNeue-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-BoldItalic.woff2') format('woff2'),
+    url('/fonts/HelveticaNeue-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}

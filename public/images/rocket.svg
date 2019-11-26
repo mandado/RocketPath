@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1698.846" height="1568.347" viewBox="0 0 1698.846 1568.347">
+  <g id="Rocket" transform="translate(90 297)">
+    <g id="RocketPath">
+      <circle id="Elipse_16" data-name="Elipse 16" cx="46.5" cy="46.5" r="46.5" transform="translate(145 834)" fill="#fcfcfc"/>
+      <circle id="Elipse_17" data-name="Elipse 17" cx="141" cy="141" r="141" transform="translate(-90 816)" fill="#fcfcfc"/>
+    </g>
+    <g id="RocketPath-2" data-name="RocketPath" transform="matrix(0.07, 0.998, -0.998, 0.07, 1417.326, -240.575)">
+      <path id="Caminho_13" data-name="Caminho 13" d="M1918.25,1249.177,654.278-15.959l.69,210.084L1699.911,1425.8Z" transform="translate(-496.978 -76.645)" fill="#f8f8f8"/>
+    </g>
+    <g id="RocketPath-3" data-name="RocketPath" transform="translate(6 -33)">
+      <circle id="Elipse_16-2" data-name="Elipse 16" cx="46.5" cy="46.5" r="46.5" transform="translate(145 834)" fill="#fcfcfc"/>
+      <circle id="Elipse_17-2" data-name="Elipse 17" cx="141" cy="141" r="141" transform="translate(-90 816)" fill="#fcfcfc"/>
+      <path id="Caminho_13-2" data-name="Caminho 13" d="M424.715,983.517,1466.259-20.344,1666.9-49.6,604.631,1123.666Z" transform="translate(-360 3.247)" fill="#fcfcfc"/>
+    </g>
+    <g id="rocket-duotone" transform="translate(1040.992 -297)">
+      <path id="Caminho_14" data-name="Caminho 14" d="M383.85,311.19v106a47.92,47.92,0,0,1-26.5,42.9l-98.7,49.39A24,24,0,0,1,224,488V384.16l133.12-59.42Q370.8,318.62,383.85,311.19ZM187.18,154.6q6.06-13.6,13.41-26.6H94.82A48,48,0,0,0,52,154.49L2.53,253.29A24,24,0,0,0,24,288H127.79Z" fill="#1ccfeb" opacity="0.4"/>
+      <path id="Caminho_15" data-name="Caminho 15" d="M505,19.1A15.9,15.9,0,0,0,492.8,6.9C460.6,0,435.41,0,410.31,0c-75.56,0-129,29.59-170.3,74a293,293,0,0,0-52.83,80.59L127.79,288l-22.47,22.47a32,32,0,0,0,0,45.25l50.9,50.91a32,32,0,0,0,45.25,0L224,384.16l133.12-59.42a293.278,293.278,0,0,0,80.59-53c44.45-41.4,74.19-94.85,74.19-170.08C512,76.5,512,51.3,505,19.1ZM384,168a40,40,0,1,1,40-40,40,40,0,0,1-40,40Z" fill="#19bfd9"/>
+    </g>
+  </g>
+</svg>

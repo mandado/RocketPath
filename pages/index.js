@@ -49,7 +49,7 @@ function Home() {
         }
       </nav>
 
-      <div className="content z-10 relative flex flex-wrap justify-center items-center color-brown h-full w-full">
+      <div className="content z-10 relative flex flex-wrap justify-center text-center items-center color-brown h-full w-full">
         <div className="pb-64">
           <p className="text-4xl font-medium w-full">
             Descubra e evolua<br/><span className="font-light">seu caminho</span> tech.

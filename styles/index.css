@@ -3,14 +3,19 @@
 @tailwind utilities;
 @import url(./fonts.css);
 
-body {
-  font-family: 'Helvetica Neue';
-}
-
-body,
 html,
+body,
 #__next {
   height: 100%;
+}
+
+#__next {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+body {
+  font-family: 'Helvetica Neue';
 }
 
 .color-brown {
@@ -24,6 +29,10 @@ html,
 .navbar {
   z-index: 3;
   position: relative;
+}
+
+.content.h-full {
+  height: calc(100% - 135px) !important;
 }
 
 .rocket {

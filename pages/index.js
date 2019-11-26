@@ -15,7 +15,7 @@ function Home() {
   return (
     <>
       {/* <img src="/images/mountains.svg" /> */}
-      <nav className="flex navbar p-10 items-center justify-between">
+      <nav className="flex navbar p-10 items-center justify-between w-full">
         <span className="flex w-48 flex-wrap color-brown">
           <h1 className="text-3xl w-full font-light leading-none">
             <span className="font-medium">Rocket</span>Path
@@ -35,6 +35,9 @@ function Home() {
                 <p className="text-md font-light leading-none">
                   14 challenges
                 </p>
+                <button onClick={() => setLogged(false)} type="button" className="text-sm text-blueteal mt-1 font-light leading-none">
+                  Sair
+                </button>
               </div>
             </div>
           ) : (
@@ -46,15 +49,16 @@ function Home() {
         }
       </nav>
 
-      <div className="content z-10 relative flex flex-wrap justify-center text-center color-brown">
-        <p className="text-4xl font-medium w-full">
-          Descubra e evolua<br/><span className="font-light">seu caminho</span> tech.
-        </p>
+      <div className="content z-10 relative flex flex-wrap justify-center items-center color-brown h-full w-full">
+        <div className="pb-64">
+          <p className="text-4xl font-medium w-full">
+            Descubra e evolua<br/><span className="font-light">seu caminho</span> tech.
+          </p>
 
-        <button className="uppercase text-2xl bg-transparent hover:bg-blueteal text-blueteal font-medium hover:text-white py-2 px-16 mt-8 border-4 border-blueteal hover:border-transparent">
-          Vamos lá
-        </button>
-
+          <button className="uppercase text-2xl bg-transparent hover:bg-blueteal text-blueteal font-medium hover:text-white py-2 px-16 mt-8 border-4 border-blueteal hover:border-transparent">
+            Vamos lá
+          </button>
+        </div>
       </div>
 
       <div className="rocket"></div>
@@ -80,7 +84,7 @@ function Home() {
             </div>
           </h4>
         </Modal>
-      )};
+      )}
     </>
   )
 }

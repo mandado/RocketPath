@@ -11,13 +11,13 @@ import posed from 'react-pose';
 const Rocket = posed.div({
   visible: { 
     x: -200, 
-    y: -460,
+    y: -760,
     transition: {
       duration: 300,
       ease: 'linear'
     } 
   },
-  hidden: { x: 0, y: '100%' },
+  hidden: { x: -2000, y: '100%' },
 });
 
 const Mountains = posed.div({

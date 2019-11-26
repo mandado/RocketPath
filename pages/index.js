@@ -4,11 +4,17 @@ import Modal from '../components/Modal';
 import Input from '../components/Input';
 
 function Home() {
-  const [modal, setModal] = useState(false);
+  const [modalLogin, setModalLogin] = useState(false);
+  const [modalSignup, setModalSignup] = useState(false);
   const [logged, setLogged] = useState(false);
 
   const loginUser = () => {
-    setModal(false);
+    setModalLogin(false);
+    setLogged(true);
+  };
+
+  const signupUser = () => {
+    setModalSignup(false);
     setLogged(true);
   };
 
@@ -42,20 +48,20 @@ function Home() {
             </div>
           ) : (
             <div className="flex">
-              <button onClick={() => setModal(true)} className="text-xl color-brown">Entrar</button>
-              <a href="#" className="text-xl color-brown ml-12">Cadastrar</a>
+              <button onClick={() => setModalLogin(true)} className="text-xl color-brown">Entrar</button>
+              <button onClick={() => setModalSignup(true)} className="text-xl color-brown ml-12">Cadastrar</button>
             </div>
           )
         }
       </nav>
 
       <div className="content z-10 relative flex flex-wrap justify-center text-center items-center color-brown h-full w-full">
-        <div className="pb-64">
+        <div className="pb-64 text-center">
           <p className="text-4xl font-medium w-full">
             Descubra e evolua<br/><span className="font-light">seu caminho</span> tech.
           </p>
 
-          <button className="uppercase text-2xl bg-transparent hover:bg-blueteal text-blueteal font-medium hover:text-white py-2 px-16 mt-8 border-4 border-blueteal hover:border-transparent">
+          <button onClick={() => setModalLogin(true)} className="uppercase text-2xl bg-transparent hover:bg-blueteal text-blueteal font-medium hover:text-white py-2 px-16 mt-8 border-4 border-blueteal hover:border-transparent">
             Vamos lá
           </button>
         </div>
@@ -64,8 +70,8 @@ function Home() {
       <div className="rocket"></div>
       <div className="mountains"></div>
         
-      {modal && (
-        <Modal onClose={() => setModal(false)}>
+      {modalLogin && (
+        <Modal onClose={() => setModalLogin(false)}>
           <h4 className="color-brown">
             <span className="text-3xl leading-none mb-2 block">Ei o/</span>
             <span className="text-xl leading-none">
@@ -78,7 +84,33 @@ function Home() {
               <Input placeholder="SENHA" />
               <div className="mt-8 text-center">
                 <button type="button" onClick={loginUser} className="uppercase text-lg bg-blueteal hover:bg-blueteal-ligter text-white font-medium hover:text-white py-1 px-12 mb-8 mt-4 border-4 border-blueteal hover:border-transparent">
-                  entrar
+                  Entrar
+                </button>
+              </div>
+            </div>
+          </h4>
+        </Modal>
+      )}
+
+      {modalSignup && (
+        <Modal onClose={() => setModalSignup(false)}>
+          <h4 className="color-brown">
+            <span className="text-3xl leading-none mb-2 block">Ei o/</span>
+            <span className="text-xl leading-none">
+              Falta pouco para descobrir <br/> o seu caminho!
+            </span>
+
+            <div className="mt-10 sign-in m-auto">
+              <Input placeholder="NOME" />
+              <br/>
+              <Input placeholder="EMAIL" />
+              <br/>
+              <Input placeholder="ESCOLARIDADE" />
+              <br/>
+              <Input placeholder="SENHA" />
+              <div className="mt-8 text-center">
+                <button type="button" onClick={signupUser} className="uppercase text-lg bg-blueteal hover:bg-blueteal-ligter text-white font-medium hover:text-white py-1 px-12 mb-8 mt-4 border-4 border-blueteal hover:border-transparent">
+                  Cadastrar
                 </button>
               </div>
             </div>

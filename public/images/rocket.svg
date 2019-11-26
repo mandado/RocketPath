@@ -1,20 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1698.846" height="1568.347" viewBox="0 0 1698.846 1568.347">
-  <g id="Rocket" transform="translate(90 297)">
-    <g id="RocketPath">
-      <circle id="Elipse_16" data-name="Elipse 16" cx="46.5" cy="46.5" r="46.5" transform="translate(145 834)" fill="#fcfcfc"/>
-      <circle id="Elipse_17" data-name="Elipse 17" cx="141" cy="141" r="141" transform="translate(-90 816)" fill="#fcfcfc"/>
-    </g>
-    <g id="RocketPath-2" data-name="RocketPath" transform="matrix(0.07, 0.998, -0.998, 0.07, 1417.326, -240.575)">
-      <path id="Caminho_13" data-name="Caminho 13" d="M1918.25,1249.177,654.278-15.959l.69,210.084L1699.911,1425.8Z" transform="translate(-496.978 -76.645)" fill="#f8f8f8"/>
-    </g>
-    <g id="RocketPath-3" data-name="RocketPath" transform="translate(6 -33)">
-      <circle id="Elipse_16-2" data-name="Elipse 16" cx="46.5" cy="46.5" r="46.5" transform="translate(145 834)" fill="#fcfcfc"/>
-      <circle id="Elipse_17-2" data-name="Elipse 17" cx="141" cy="141" r="141" transform="translate(-90 816)" fill="#fcfcfc"/>
-      <path id="Caminho_13-2" data-name="Caminho 13" d="M424.715,983.517,1466.259-20.344,1666.9-49.6,604.631,1123.666Z" transform="translate(-360 3.247)" fill="#fcfcfc"/>
-    </g>
-    <g id="rocket-duotone" transform="translate(1040.992 -297)">
-      <path id="Caminho_14" data-name="Caminho 14" d="M383.85,311.19v106a47.92,47.92,0,0,1-26.5,42.9l-98.7,49.39A24,24,0,0,1,224,488V384.16l133.12-59.42Q370.8,318.62,383.85,311.19ZM187.18,154.6q6.06-13.6,13.41-26.6H94.82A48,48,0,0,0,52,154.49L2.53,253.29A24,24,0,0,0,24,288H127.79Z" fill="#1ccfeb" opacity="0.4"/>
-      <path id="Caminho_15" data-name="Caminho 15" d="M505,19.1A15.9,15.9,0,0,0,492.8,6.9C460.6,0,435.41,0,410.31,0c-75.56,0-129,29.59-170.3,74a293,293,0,0,0-52.83,80.59L127.79,288l-22.47,22.47a32,32,0,0,0,0,45.25l50.9,50.91a32,32,0,0,0,45.25,0L224,384.16l133.12-59.42a293.278,293.278,0,0,0,80.59-53c44.45-41.4,74.19-94.85,74.19-170.08C512,76.5,512,51.3,505,19.1ZM384,168a40,40,0,1,1,40-40,40,40,0,0,1-40,40Z" fill="#19bfd9"/>
-    </g>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1698.8 1568.3" style="enable-background:new 0 0 1698.8 1568.3;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FCFCFC;}
+	.st1{fill:#F8F8F8;}
+	.st2{opacity:0.4;fill:#1CCFEB;enable-background:new    ;}
+	.st3{fill:#19BFD9;}
+</style>
+<g id="Rocket" transform="translate(90 297)">
+	<g id="RocketPath">
+		<circle id="Elipse_16" class="st0" cx="191.5" cy="880.5" r="46.5"/>
+	</g>
+	<g id="RocketPath-2" transform="matrix(0.07, 0.998, -0.998, 0.07, 1417.326, -240.575)">
+		<path id="Caminho_13" class="st1" d="M1421.3,1172.5L-169.9-434.8l-43.8,106l1416.6,1678L1421.3,1172.5z"/>
+	</g>
+	<g id="RocketPath-3" transform="translate(6 -33)">
+		<circle id="Elipse_16-2" class="st0" cx="191.5" cy="880.5" r="46.5"/>
+		<circle id="Elipse_17-2" class="st0" cx="51" cy="957" r="141"/>
+		<path id="Caminho_13-2" class="st0" d="M51,1063.9L1525.7-419.2l200.6-29.3L215.7,1158.9L51,1063.9z"/>
+	</g>
+	<g id="rocket-duotone" transform="translate(1040.992 -297)">
+		<path id="Caminho_14" class="st2" d="M798.4-103.4v106c0,18.2-10.2,34.8-26.5,42.9l-98.7,49.4c-11.9,5.9-26.3,1-32.2-10.9
+			c-1.6-3.3-2.5-6.9-2.5-10.6V-30.4l133.1-59.4C780.8-93.9,789.7-98.4,798.4-103.4z M601.7-260c4-9.1,8.5-17.9,13.4-26.6H509.4
+			c-18.1,0-34.7,10.3-42.8,26.5l-49.5,98.8c-5.9,11.9-1.1,26.3,10.8,32.2c3.3,1.7,7,2.5,10.7,2.5h103.8L601.7-260z"/>
+		<path id="Caminho_15" class="st3" d="M919.6-395.5c-1.3-6.1-6.1-10.9-12.2-12.2c-32.2-6.9-57.4-6.9-82.5-6.9
+			c-75.6,0-129,29.6-170.3,74c-21.9,23.8-39.8,51-52.8,80.6l-59.4,133.4l-22.5,22.5c-12.5,12.5-12.5,32.8,0,45.2l50.9,50.9
+			c12.5,12.5,32.8,12.5,45.2,0l22.5-22.5l133.1-59.4c29.6-13.1,56.8-31,80.6-53c44.5-41.4,74.2-94.9,74.2-170.1
+			C926.6-338.1,926.6-363.3,919.6-395.5z M798.6-246.6c-22.1,0-40-17.9-40-40c0-22.1,17.9-40,40-40c22.1,0,40,17.9,40,40
+			C838.6-264.5,820.6-246.6,798.6-246.6z"/>
+	</g>
+</g>
 </svg>

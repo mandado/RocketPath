@@ -1,13 +1,43 @@
 import '../styles/index.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from '../components/Modal';
 import Input from '../components/Input';
 import Select from '../components/Select';
+import RocketSvg from '../components/icons/Rocket';
+import MountainsSvg from '../components/icons/Mountains';
+
+import posed from 'react-pose';
+
+const Rocket = posed.div({
+  visible: { 
+    x: -200, 
+    y: -460,
+    transition: {
+      duration: 300,
+      ease: 'linear'
+    } 
+  },
+  hidden: { x: 0, y: '100%' },
+});
+
+const Mountains = posed.div({
+  visible: { 
+    x: -50, 
+    y: '110%',
+    z: 10,
+    transition: {
+      duration: 300,
+      ease: 'linear'
+    } 
+  },
+  hidden: { x: 0, y: '220%' }
+});
 
 function Home() {
   const [modalLogin, setModalLogin] = useState(false);
   const [modalSignup, setModalSignup] = useState(false);
   const [logged, setLogged] = useState(false);
+  const [toggled, setToggled] = useState(false);
 
   const loginUser = () => {
     setModalLogin(false);
@@ -18,6 +48,10 @@ function Home() {
     setModalSignup(false);
     setLogged(true);
   };
+
+  useEffect(() => {
+    setToggled(true);
+  }, []);
 
   return (
     <>
@@ -68,8 +102,13 @@ function Home() {
         </div>
       </div>
 
-      <div className="rocket"></div>
-      <div className="mountains"></div>
+      <Rocket className="rocket absolute" pose={toggled ? 'visible' : 'hidden'}>
+        <RocketSvg />
+      </Rocket>
+      <Mountains className="rocket absolute" pose={toggled ? 'visible' : 'hidden'}>
+        <MountainsSvg />
+      </Mountains>
+      {/* <div className="mountains"></div> */}
         
       {modalLogin && (
         <Modal onClose={() => setModalLogin(false)}>

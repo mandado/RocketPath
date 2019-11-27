@@ -14,7 +14,7 @@ function* submitLogin(action) {
     if(status === 200){
      ls.set('token', token);
      ls.set('current_user', user.id);
-     yield put({type: Types.RESPONSE, payload: { token, user }});
+     yield put({type: Types.RESPONSE, payload: { token, user, checked: true }});
      yield put({type: TypesModal.TOGGLE_LOGIN_MODAL, payload: false});
     }
     else 

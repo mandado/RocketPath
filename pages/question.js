@@ -1,30 +1,41 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Creators } from '../store/ducks/Challenge';
 
-const ConfirmPathInterest = ({ onCancel }) => (
-  <>
-    <h2 className="text-5xl mb-24 text-brown font-bold">
-      Hm… Que tal seguir o<br/> caminho Health-Tech?
-    </h2>
+const questions = [
+  '“Imprimir uma cópia”',
+  '“Perguntar Sintomas”',
+  '“Perguntar Dados Pessoais"',
+  '“Guardar Sintomas“'
+]
 
+function Question({ saveChallenge, readChallenge }) {
+  const [blocks, setBlocks] = useState([]);
 
-    <div className="flex block -mx-4">
-      <div className="w-1/2 px-4">
-        <button className="shadow bg-blueteal rounded-lg p-4 text-2xl text-white w-full">
-          Sim
-        </button>
-      </div>
-      <div className="w-1/2 px-4">
-        <button onClick={onCancel} className="shadow bg-white rounded-lg p-4 text-2xl text-brown w-full">
-          Tente Novamente
-        </button>
-      </div>
-    </div>
-  </>
-)
+  const removeBlock = (block) => {
+    setBlocks(
+      blocks.filter(item => block !== item)
+    );
+  };
 
-export default function pages() {
-  const [toggle, setToggle] = useState(true);
+  const addBlock = (block) => {
+    setBlocks(
+      blocks.concat(block)
+    );
+  };
+
+  const isSelected = (block) => blocks.includes(block);
+  const clearAllSelected = () => setBlocks([]);
+
+  const answerChallenge = () => {
+    saveChallenge({
+      id: -1,
+      answer: blocks.join(' ')
+    });
+  };
+
   return (
     <div className="mb-64 flex -mr-4 flex-wrap w-full">
       <div className="w-4/12 pr-4 pl-20 mt-24">
@@ -32,35 +43,29 @@ export default function pages() {
           <p className="uppercase text-lg font-medium mb-10 w-full">Ferramentas</p>
 
           <div className="w-full mb-4">
-            <button className="border-2 w-64 border-yellowOption hover:bg-yellowOption hover:text-white text-yellowOption px-4 py-2">
-              “Imprimir uma cópia”
-            </button>
-          </div>
-
-          <div className="w-full mb-4">
-            <button className="border-2 w-64 border-yellowOption hover:bg-yellowOption hover:text-white text-yellowOption px-4 py-2">
-              “Perguntar Sintomas”
-            </button>
-          </div>
-
-          <div className="w-full mb-4">
-            <button className="border-2 w-64 border-yellowOption hover:bg-yellowOption hover:text-white text-yellowOption px-4 py-2">
-              “Perguntar Dados Pessoais"
-            </button>
-          </div>
-
-          <div className="w-full mb-4">
-            <button className="border-2 w-64 border-yellowOption hover:bg-yellowOption hover:text-white text-yellowOption px-4 py-2">
-              “Guardar Sintomas“
-            </button>
-          </div>
+            {
+              questions.map(question => {
+                return (
+                  <div className="w-full mb-4">
+                    <button disabled={isSelected(question)} onClick={() => addBlock(question)} className={`border-2 ${isSelected(question) ? 'disabled:border-gray-300 text-gray-300' : 'border-yellowOption hover:bg-yellowOption hover:text-white text-yellowOption'} lg:w-64 px-4 py-2`}>
+                      {question}
+                    </button>
+                  </div>
+                );
+              })
+            }
         </div>
+      </div>
 
         <Link href="/path">
           <a className="text-blueteal uppercase text-xl block mt-4">
             Voltar
           </a>
         </Link>
+
+        <button onClick={answerChallenge} className="text-blueteal uppercase text-5xl mt-10">
+          Avançar
+        </button>
       </div>
       <div className="w-8/12 p-20">
         <h2 className="text-5xl text-brown font-bold">
@@ -70,15 +75,34 @@ export default function pages() {
           Ei, um paciente acabou de chegar em sua clinica, como cadastrá-lo de maneira lógica?
         </p>
 
-        <div className="p-24 border-2 border-dashed bg-white"></div>
-        <div className="text-right mt-4">
-          <a href="#" className="uppercase text-xl text-gray-400 font-medium">Limpar tudo</a>
+        <div className="p-12 border-2 border-dashed bg-white flex flex-wrap">
+          {
+            blocks.map(block => {
+              return (
+                <div className="w-full flow relative">
+                  <div className="flex justify-between items-center mt-5 mb-5 border-2 w-64 border-yellowOption text-yellowOption px-4 py-2">
+                    <button className="text-xl items-center flex px-2" onClick={() => removeBlock(block )}>
+                      &times;
+                    </button>
+                    {block}
+                  </div>
+                </div>
+              );
+            })
+          }
         </div>
-
-        <button className="text-blueteal uppercase text-5xl mt-10">
-          Avançar
-        </button>
+        <div className="text-right mt-4">
+          <button onClick={clearAllSelected} className="uppercase text-xl text-gray-400 font-medium">Limpar tudo</button>
+        </div>
       </div>
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(Creators, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Question);

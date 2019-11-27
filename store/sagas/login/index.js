@@ -32,7 +32,7 @@ function* submitSignup(action) {
       const { data:{ user, token} = {} } = yield api.post('/login', payload);
      ls.set('token', token.token);
      ls.set('current_user', user.id);
-     yield put({type: Types.RESPONSE, payload: { token, user }});
+     yield put({type: Types.RESPONSE, payload: { token, user, checked: true }});
      yield put({type: TypesModal.TOGGLE_SIGNUP_MODAL, payload: false});
     }
     else 

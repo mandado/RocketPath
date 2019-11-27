@@ -12,7 +12,7 @@ import LoginModal from '../components/LoginModal';
 
 const Rocket = posed.div({
   visible: { 
-    x: '120%', 
+    x: 2400, 
     y: -760,
     transition: {
       duration: 350,

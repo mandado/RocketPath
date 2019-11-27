@@ -13,7 +13,7 @@ const Header = ({ token, toggleLoginModal, toggleSignupModal, logout, checkLogin
       {
         token ? (
           <div className="flex items-center">
-            <a href="#" className="text-xl mr-8 color-brown">Rank</a>
+            {/* <a href="#" className="text-xl mr-8 color-brown">Rank</a> */}
             <img src="/images/avatar.png" className="w-20" />
             <div className="color-brown ml-2">
               <p className="text-xl font-medium leading-none mb-1">{user.name}</p>

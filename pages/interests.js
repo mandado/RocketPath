@@ -4,37 +4,25 @@ import { connect } from 'react-redux';
 import { Creators } from '../store/ducks/Interests';
 import Router from 'next/router';
 
-const SelectInterests = ({ onSubmit }) => {
+const SelectInterests = ({ onSubmit, setInterests, interests }) => {
   const [nextAvailable, setNextAvailable] = useState(true);
-
-  const [interests, setInterests] = useState([
-    {id: '1', name: 'Quadrinhos'},
-    {id: '2', name: 'Jogos'},
-    {id: '3', name: 'Biologia'},
-    {id: '4', name: 'Saúde'},
-    {id: '5', name: 'Lógica'},
-    {id: '7', name: 'Grays-Anatomy'},
-    {id: '8', name: 'Quebra-Cabeças'},
-    {id: '9', name: 'Dieta'},
-  ]);
-
 
   const onOptionClick = (interest) => {
     const index = interests.findIndex(e => (e.id === interest.id));
     const checkedInterests = interests.filter(e => e.checked);
     const interest_draft = interests.slice();
-    if( checkedInterests.length <4 && !interest_draft[index].checked){
+    if( checkedInterests.length <5 && !interest_draft[index].checked){
       interest_draft[index].checked = !interest_draft[index].checked;
     } else {
       interest_draft[index].checked = false;
     }
     const updatedCheckedInterests = interest_draft.filter(e => e.checked);
-    if(updatedCheckedInterests.length === 4){
+    if(updatedCheckedInterests.length === 5){
       setNextAvailable(false);
     } else {
       setNextAvailable(true);
     }
-    setInterests(interest_draft);
+    setInterests({interests: interest_draft});
   }
 
   return (
@@ -48,13 +36,13 @@ const SelectInterests = ({ onSubmit }) => {
         {interests.map( (interest) => (
           <div className="w-3/12 px-4 mb-6 block" key={interest.id}>
             <button onClick={() => onOptionClick(interest)} className={`shadow ${ !interest.checked ? 'bg-white text-brown' : 'bg-blueteal text-white'}  rounded-lg p-6 text-2xl w-full`}>
-              {interest.name}
+              {interest.title}
             </button>
           </div>
         ))}
       </div>
       {!nextAvailable && (
-        <button disabled={nextAvailable} onClick={onSubmit} className="text-blueteal uppercase text-5xl mt-20">
+        <button disabled={nextAvailable} onClick={() => onSubmit(interests)} className="text-blueteal uppercase text-5xl mt-20">
           Avançar
         </button>
       )}
@@ -85,9 +73,12 @@ const ConfirmPathInterest = ({ onCancel, affinity }) => (
   </>
 )
 
-const pages = ({saveInterests, resetInterests, loginChecked, user = {}, saved}) => {  
+const pages = ({saveInterests, readInterests, resetInterests, setInterests, interests, loginChecked, user = {}, saved}) => {  
+  useEffect(()=>{
+    readInterests();
+  },[]);
   useEffect(()=> {
-    loginChecked && !saved && user.affinity !== null && Router.push('/path');
+    // loginChecked && !saved && Router.push('/path');
   },[loginChecked, saved]);
 
   if (!loginChecked) {
@@ -96,7 +87,13 @@ const pages = ({saveInterests, resetInterests, loginChecked, user = {}, saved}) 
   
   return (
     <div className="mb-64">
-      {!saved ? <SelectInterests onSubmit={saveInterests}/> : <ConfirmPathInterest affinity={user.affinity} onCancel={resetInterests} />}
+      {!saved ?
+        <SelectInterests
+          onSubmit={saveInterests}
+          setInterests={setInterests}
+          interests={interests}
+        /> : 
+        <ConfirmPathInterest affinity={user.affinity} onCancel={resetInterests} />}
     </div>
   );
 }
@@ -104,7 +101,8 @@ const pages = ({saveInterests, resetInterests, loginChecked, user = {}, saved}) 
 const mapStateToProps = state => ({
   user: state.Login.user,
   loginChecked: state.Login.checked,
-  saved: state.Interests.saved
+  saved: state.Interests.saved,
+  interests: state.Interests.interests,
 });
 
 const mapDispatchToProps = dispatch =>

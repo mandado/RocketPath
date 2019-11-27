@@ -52,6 +52,7 @@ function* getCurrentUser() {
   try { 
     const current_user = ls.get('current_user');
     const token = ls.get('token');
+    console.log(token)
     if(current_user && token){
       const response = yield api.get(`/users/${current_user}`);
       const { data: { user }, status } = response;

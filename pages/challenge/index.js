@@ -87,6 +87,10 @@ function Question({ saveChallenge, readChallenge, challenge, reading }) {
             Voltar
           </a>
         </Link>
+    
+        <button onClick={answerChallenge} className="text-blueteal uppercase text-5xl mt-10">
+          Avançar
+        </button>
       </div>
       <div className="w-8/12 p-20">
         <h2 className="text-5xl text-brown font-bold">
@@ -115,10 +119,6 @@ function Question({ saveChallenge, readChallenge, challenge, reading }) {
         <div className="text-right mt-4">
           <button onClick={clearAllSelected} className="uppercase text-xl text-gray-400 font-medium">Limpar tudo</button>
         </div>
-
-        <button onClick={answerChallenge} className="text-blueteal uppercase text-5xl mt-10">
-          Avançar
-        </button>
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ const schema = Yup.object().shape({
     .required('Campo requirido'),
 });
 
-const SingupModal = ({ toggleSignupModal, submitSignup }) => {
+const SingupModal = ({ toggleSignupModal, submitSignup, loading }) => {
   const handleSubmit = (values) => {
     submitSignup(values);
   }
@@ -41,17 +41,17 @@ const SingupModal = ({ toggleSignupModal, submitSignup }) => {
           <Select
             name="grade"
             options={[
-              { value: 'EnsinoFundamental', label: 'Ensino Fundamental' },
-              { value: 'EnsinoMedio', label: 'Ensino Médio' },
-              { value: 'EnsinoSuperior', label: 'Ensino Superior' },
+              { value: 'Ensino Fundamental', label: 'Ensino Fundamental' },
+              { value: 'Ensino Médio', label: 'Ensino Médio' },
+              { value: 'Ensino Superior', label: 'Ensino Superior' },
             ]}
             placeholder="Selecione sua escolaridade"
           />
           <br/>
           <Input placeholder="SENHA" name="password" type="password" />
           <div className="mt-8 text-center">
-            <button type="submit" className="uppercase text-lg bg-blueteal hover:bg-blueteal-ligter text-white font-medium hover:text-white py-1 px-12 mb-8 mt-4 border-4 border-blueteal hover:border-transparent">
-              Cadastrar
+            <button type="submit" disabled={loading} className="uppercase text-lg bg-blueteal hover:bg-blueteal-ligter text-white font-medium hover:text-white py-1 px-12 mb-8 mt-4 border-4 border-blueteal hover:border-transparent">
+            {loading ?  'Aguarde...' : 'Cadastrar'}
             </button>
           </div>
         </Form>
@@ -61,7 +61,7 @@ const SingupModal = ({ toggleSignupModal, submitSignup }) => {
 };
 
 const mapStateToProps = state => ({
-  
+  loading: state.Login.loading
 });
 
 const mapDispatchToProps = dispatch =>

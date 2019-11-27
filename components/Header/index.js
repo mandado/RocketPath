@@ -4,13 +4,11 @@ import { connect } from 'react-redux';
 import { Creators } from '../../store/ducks/Login';
 import { Creators as ModalCreators} from '../../store/ducks/modal';
 
-const Header = ({ token, toggleLoginModal, toggleSignupModal }) => {
-  const [tok,setToken] = useState(token);
-
+const Header = ({ token, toggleLoginModal, toggleSignupModal, logout }) => {
   return(
     <>
       {
-        tok ? (
+        token ? (
           <div className="flex items-center">
             <a href="#" className="text-xl mr-8 color-brown">Rank</a>
             <img src="/images/avatar.png" className="w-20" />
@@ -19,7 +17,7 @@ const Header = ({ token, toggleLoginModal, toggleSignupModal }) => {
               <p className="text-md font-light leading-none">
                 Descobrindo...
               </p>
-              <button onClick={() => setToken(undefined)} type="button" className="text-sm text-blueteal mt-1 font-light leading-none">
+              <button onClick={logout} type="button" className="text-sm text-blueteal mt-1 font-light leading-none">
                 Sair
               </button>
             </div>

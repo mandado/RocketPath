@@ -18,7 +18,7 @@ export const Creators = {
     return { type: Types.SUBMIT_SIGNUP, payload };
   },
   logout() {
-    return { type: Types.LOGOUT, payload };
+    return { type: Types.LOGOUT };
   }
 };
 

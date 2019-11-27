@@ -18,7 +18,7 @@ const schema = Yup.object().shape({
     .required('Campo requirido'),
 });
 
-const LoginModal = ({submitLogin, toggleLoginModal}) => {
+const LoginModal = ({submitLogin, toggleLoginModal, loading}) => {
   const handleSubmit = (values) => {
     submitLogin(values)
   }
@@ -34,8 +34,8 @@ const LoginModal = ({submitLogin, toggleLoginModal}) => {
         <br/>
         <Input placeholder="SENHA" name="password" type="password"/>
         <div className="mt-8 text-center">
-          <button type="submit" className="uppercase text-lg bg-blueteal hover:bg-blueteal-ligter text-white font-medium hover:text-white py-1 px-12 mb-8 mt-4 border-4 border-blueteal hover:border-transparent">
-            Entrar
+          <button type="submit" disabled={loading} className="uppercase text-lg bg-blueteal hover:bg-blueteal-ligter text-white font-medium hover:text-white py-1 px-12 mb-8 mt-4 border-4 border-blueteal hover:border-transparent">
+            {loading ? 'Aguarde...' : 'Entrar'}
           </button>
         </div>
       </Form>
@@ -44,7 +44,7 @@ const LoginModal = ({submitLogin, toggleLoginModal}) => {
 };
 
 const mapStateToProps = state => ({
-  
+  loading: state.Login.loading
 });
 
 const mapDispatchToProps = dispatch =>

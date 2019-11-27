@@ -45,7 +45,7 @@ export default function ReactSelect({
   }
 
   return (
-    <div class="flex items-center border-b border-b-2 border-blueteal py-2 input-holder">
+    <div className="flex items-center border-b border-b-2 border-blueteal py-2 input-holder">
       {label && <label htmlFor={fieldName}>{label}</label>}
       <Select
         name={fieldName}

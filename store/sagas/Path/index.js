@@ -10,6 +10,7 @@ function* loadPaths(){
     const { data } = yield api.get('/challenges');
     yield put({type: Types.SET_PATHS, payload: { challenges: data}})
   } catch (error) {
+    yield put({type: Types.SET_PATHS, payload: { challenges: [] }})
     
   }
 }

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Creators } from '../../store/ducks/Challenge';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 function Question({ saveChallenge, readChallenge, challenge, reading }) {
   const [blocks, setBlocks] = useState([]);
@@ -29,6 +29,7 @@ function Question({ saveChallenge, readChallenge, challenge, reading }) {
       id: challenge.id,
       answer: blocks.join(' ')
     });
+    Router.push('/path');
   };
 
   useEffect(() => {

@@ -159,7 +159,11 @@ body {
   height: 42px;
   bottom: -20px;
 }
-  
+
+.levels {
+  height: 650px;
+}
+
 .tooltip-container {
   margin: 1.5rem !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);

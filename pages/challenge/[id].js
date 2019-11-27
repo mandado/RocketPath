@@ -42,8 +42,11 @@ function Question({ saveChallenge, readChallenge, challenge, reading }) {
       id: challenge.id,
       answer: blocks.join(' ')
     });
+    
     Router.push('/path');
   };
+
+  console.log(router.query);
 
   useEffect(() => {
     if (router.query.id) {

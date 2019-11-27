@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Creators } from '../store/ducks/Login';
 import Router from 'next/router';
 
-const SelectInterests = ({ }) => {
+const SelectInterests = ({ onSubmit }) => {
   const [nextAvailable, setNextAvailable] = useState(true);
 
   const [interests, setInterests] = useState([
@@ -53,7 +53,7 @@ const SelectInterests = ({ }) => {
         ))}
       </div>
 
-      <button disabled={nextAvailable} className="text-blueteal uppercase text-5xl mt-20">
+      <button disabled={nextAvailable} onClick={onSubmit} className="text-blueteal uppercase text-5xl mt-20">
         Avançar
       </button>
     </>
@@ -89,7 +89,7 @@ const pages = ({loginChecked, user = {}}) => {
   },[loginChecked]);
   return (
     <div className="mb-64">
-      {toggle ? <SelectInterests /> : <ConfirmPathInterest onCancel={() => setToggle(true)} />}
+      {toggle ? <SelectInterests onSubmit={()=> setToggle(false)}/> : <ConfirmPathInterest onCancel={() => setToggle(true)} />}
     </div>
   );
 }

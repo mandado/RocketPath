@@ -65,8 +65,18 @@ body {
   bottom: 0;
 }
 
-.landig-text{
+.input-holder{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
 
+.input-holder span {
+  position: absolute;
+  top: 100%;
+  color: #FF5500;
+  font-size: .8rem;
+  line-height: 2rem;
 }
 
 .modal {

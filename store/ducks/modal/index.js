@@ -8,7 +8,7 @@ export const Types = {
   TOGGLE_SIGNUP_MODAL: 'modal/TOGGLE_SIGNUP_MODAL',
 };
 
-export const Actions = {
+export const Creators = {
   toggleLoginModal(payload) {
     return {
       type: Types.TOGGLE_LOGIN_MODAL,

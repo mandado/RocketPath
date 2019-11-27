@@ -3,13 +3,12 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import posed from 'react-pose';
-import Modal from '../components/Modal';
-import Input from '../components/Input';
-import Select from '../components/Select';
 import Header from '../components/Header';
 import RocketSvg from '../components/icons/Rocket';
 import MountainsSvg from '../components/icons/Mountains';
-import { Actions } from '../store/ducks/modal/index';
+
+import SingupModal from '../components/SingupModal';
+import LoginModal from '../components/LoginModal';
 
 const Rocket = posed.div({
   visible: { 
@@ -61,7 +60,7 @@ function Layout({ children }) {
   const dispatch = useDispatch();
   const loginModal = useSelector(state => state.modal.loginModal);
   const signupModal = useSelector(state => state.modal.signupModal);
-  const { toggleLoginModal, toggleSignupModal } = Actions;
+
 
   const loginUser = () => {
     dispatch(toggleLoginModal(false));
@@ -103,57 +102,9 @@ function Layout({ children }) {
         <MountainsSvg />
       </Mountains>
         
-      {loginModal && (
-        <Modal onClose={() => dispatch(toggleLoginModal(false))}>
-          <h4 className="color-brown">
-            <span className="text-3xl leading-none mb-2 block">Ei o/</span>
-            <span className="text-xl leading-none">
-              Falta pouco para descobrir <br/> o seu caminho!
-            </span>
+      {loginModal && <LoginModal/>}
 
-            <div className="mt-10 sign-in m-auto">
-              <Input placeholder="EMAIL" />
-              <br/>
-              <Input placeholder="SENHA" />
-              <div className="mt-8 text-center">
-                <button type="button" onClick={loginUser} className="uppercase text-lg bg-blueteal hover:bg-blueteal-ligter text-white font-medium hover:text-white py-1 px-12 mb-8 mt-4 border-4 border-blueteal hover:border-transparent">
-                  Entrar
-                </button>
-              </div>
-            </div>
-          </h4>
-        </Modal>
-      )}
-
-      {signupModal && (
-        <Modal onClose={() => dispatch(toggleSignupModal(false))}>
-          <h4 className="color-brown">
-            <span className="text-3xl leading-none mb-2 block">Ei o/</span>
-            <span className="text-xl leading-none">
-              Falta pouco para descobrir <br/> o seu caminho!
-            </span>
-
-            <div className="mt-10 sign-in m-auto">
-              <Input placeholder="NOME" />
-              <br/>
-              <Input placeholder="EMAIL" />
-              <br/>
-              <Select options={[
-                { value: 'EnsinoFundamental', text: 'Ensino Fundamental' },
-                { value: 'EnsinoMedio', text: 'Ensino Médio' },
-                { value: 'EnsinoSuperior', text: 'Ensino Superior' },
-              ]} />
-              <br/>
-              <Input placeholder="SENHA" />
-              <div className="mt-8 text-center">
-                <button type="button" onClick={signupUser} className="uppercase text-lg bg-blueteal hover:bg-blueteal-ligter text-white font-medium hover:text-white py-1 px-12 mb-8 mt-4 border-4 border-blueteal hover:border-transparent">
-                  Cadastrar
-                </button>
-              </div>
-            </div>
-          </h4>
-        </Modal>
-      )}
+      {signupModal && <SingupModal/>}
     </>
   )
 }

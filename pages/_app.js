@@ -11,9 +11,15 @@ class MyApp extends App {
     return {pageProps};
   }
 
+  componentDidMount(){
+    if (process.browser) {
+      // LoadTron();
+    }
+    
+  }
+
   render() {
     const { Component, pageProps, store} = this.props;
-
     return (
       <Provider store={store}>
         <Layout>
@@ -23,5 +29,6 @@ class MyApp extends App {
     );
   }
 }
+
 
 export default withRedux(makeStore)(MyApp);

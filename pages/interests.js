@@ -25,7 +25,6 @@ const SelectInterests = ({ onSubmit }) => {
     const interest_draft = interests.slice();
     if( checkedInterests.length <4 && !interest_draft[index].checked){
       interest_draft[index].checked = !interest_draft[index].checked;
-      setNextAvailable(true);
     } else {
       interest_draft[index].checked = false;
       setNextAvailable(true);
@@ -52,9 +51,12 @@ const SelectInterests = ({ onSubmit }) => {
           </div>
         ))}
       </div>
-      <button disabled={nextAvailable} onClick={() => onSubmit(interests)} className={`${nextAvailable && 'disabled:text-gray-100' || 'text-blueteal' } uppercase text-5xl mt-20`}>
-        Avançar
-      </button>
+      {!nextAvailable && (
+        <button disabled={nextAvailable} onClick={onSubmit} className="text-blueteal uppercase text-5xl mt-20">
+          Avançar
+        </button>
+      )}
+      
     </>
   )
 };

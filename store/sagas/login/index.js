@@ -53,7 +53,7 @@ function* getCurrentUser() {
     const token = ls.get('token');
     if(current_user && token){
       const response = yield api.get(`/users/${current_user}`);
-      const { data: user = {}, status } = response;
+      const { data: { user }, status } = response;
       if(status === 200){
        yield put({type: Types.RESPONSE, payload: { user, token, checked: true }});
        return;

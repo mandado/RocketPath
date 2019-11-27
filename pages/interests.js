@@ -25,12 +25,11 @@ const SelectInterests = ({ onSubmit }) => {
     const interest_draft = interests.slice();
     if( checkedInterests.length <4 && !interest_draft[index].checked){
       interest_draft[index].checked = !interest_draft[index].checked;
-      setNextAvailable(true);
     } else {
       interest_draft[index].checked = false;
       setNextAvailable(true);
     }
-    if(checkedInterests.length === 3){
+    if(checkedInterests.length> 1){
       setNextAvailable(false);
     }
     setInterests(interest_draft);

@@ -50,7 +50,7 @@ function Question({ saveChallenge, readChallenge, challenge, reading }) {
       console.log(router.query);
       readChallenge(router.query.id);
     }
-  }, [router.query]);
+  }, [router]);
 
   if (reading) {
     return (

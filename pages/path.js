@@ -1,7 +1,30 @@
 import React, { useState } from 'react';
 import Tooltip from '../components/Tooltip';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Creators } from '../store/ducks/Path';
 
-export default function pages() {
+const groupBy = (list, keyGetter) => {
+  const map = new Map();
+  list.forEach((item) => {
+       const key = keyGetter(item);
+       const collection = map.get(key);
+       if (!collection) {
+           map.set(key, [item]);
+       } else {
+           collection.push(item);
+       }
+  });
+  return map;
+}
+
+const pages = ({ loadPaths, challenges = [], user }) => {
+  useState(()=>{
+    loadPaths();
+  }, []);
+  
+  const grouped = groupBy(challenges, chall => chall.affinity).get(user.affinity);
+  console.log(grouped);
   return (
     <div className="mb-64">
       <h2 className="text-5xl mb-10 text-brown font-bold">
@@ -41,3 +64,13 @@ export default function pages() {
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+  challenges: state.Path.challenges,
+  user: state.Login.user
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(Creators, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(pages)

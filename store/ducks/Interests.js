@@ -2,14 +2,6 @@ const STATE = {
   loading: false,
   saved: false,
   interests: [
-    {id: '1', name: 'Quadrinhos'},
-    {id: '2', name: 'Jogos'},
-    {id: '3', name: 'Biologia'},
-    {id: '4', name: 'Saúde'},
-    {id: '5', name: 'Lógica'},
-    {id: '7', name: 'Grays-Anatomy'},
-    {id: '8', name: 'Quebra-Cabeças'},
-    {id: '9', name: 'Dieta'},
   ],
 };
 

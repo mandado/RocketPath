@@ -3,6 +3,7 @@ import Tooltip from '../components/Tooltip';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Creators } from '../store/ducks/Path';
+import Link from 'next/link';
 
 const groupBy = function(xs = [], key) {
   return xs.reduce(function(rv, x) {
@@ -12,10 +13,12 @@ const groupBy = function(xs = [], key) {
 };
 
 const pages = ({ loadPaths, challenges, user }) => {
-  useState(()=>{
+  useState(()=> {
     loadPaths();
   }, []);
+
   
+  const userChallengesId = (user.userChallenges || []).map(item => item.id);
   const grouped = groupBy(challenges, 'affinity')[user.affinity];
   const groupedLvl = groupBy(grouped, 'level') || [];
   return (
@@ -24,20 +27,22 @@ const pages = ({ loadPaths, challenges, user }) => {
         Aproveite a Viagem!
       </h2>
       
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center overflow-y-scroll">
         {Object.keys(groupedLvl).map(lvl => {
           return(
-            <div className="level-holder" key={lvl}>
-              <span className="level-name">Level</span>
-              <div className="holder flex">
-                {groupedLvl[lvl].map(challange => {
-                  console.log(challange)
+            <div className="w-full border-2 p-5 mb-10 border-dashed relative border-gray-400 level-group" key={lvl}>
+              <div className="mb-10 block text-xl text-blueteal font-semibold">Level {lvl}</div>
+              <div className="flex justify-center -mx-4">
+                {groupedLvl[lvl].map(challenge => {
                   return(
-                    <div className="challenge">
-                      <Tooltip placement="right" trigger="hover" tooltip="Hi there!">
-                        <img src="/images/monitor.png" />
-                      </Tooltip>
-                    </div>
+                    <Link href={!userChallengesId.includes(challenge.id) ? `/challenge/${challenge.id}` : '/#'}>
+                      <a className={`flex justify-center flex-wrap ${userChallengesId.includes(challenge.id) ? `text-green-500`: `hover:text-yellowOption`}`}>
+                        <div className={`challenge ${userChallengesId.includes(challenge.id) ? `bg-green-500` : `bg-blueteal hover:bg-yellowOption`} p-6 mx-4 rounded-full`}>
+                              <img src="/images/monitor.png" />
+                        </div>
+                        <p className="mt-4 w-full">{challenge.title}</p>
+                      </a>
+                    </Link>
                   )
                 })}
               </div>
@@ -46,18 +51,6 @@ const pages = ({ loadPaths, challenges, user }) => {
             </div>
         )})}
         
-{/*         
-        <div className="fork-path relative">
-          <div className="point-path left-branch relative w-20 h-20 flex items-center justify-center rounded-full p-4">
-            <img src="/images/hospital-bedroom.png" />
-          </div>
-          <div className="point-path relative w-20 h-20 flex items-center justify-center rounded-full p-4">
-            <img src="/images/insurance-expensive.png" />
-          </div>
-          <div className="point-path right-branch relative w-20 h-20 flex items-center justify-center rounded-full p-4">
-            <img src="/images/blood-drop-type-positive.png" />
-          </div>
-        </div> */}
       </div>
 
       <button className="text-blueteal uppercase text-5xl mt-20">

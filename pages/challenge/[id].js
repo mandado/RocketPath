@@ -2,17 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Creators } from '../store/ducks/Challenge';
-
-const questions = [
-  '“Imprimir uma cópia”',
-  '“Perguntar Sintomas”',
-  '“Perguntar Dados Pessoais"',
-  '“Guardar Sintomas“'
-]
+import { Creators } from '../../store/ducks/Challenge';
+import { useRouter } from 'next/router';
 
 function Question({ saveChallenge, readChallenge, challenge, reading }) {
   const [blocks, setBlocks] = useState([]);
+  const router = useRouter();
 
   const removeBlock = (block) => {
     setBlocks(
@@ -37,8 +32,8 @@ function Question({ saveChallenge, readChallenge, challenge, reading }) {
   };
 
   useEffect(() => {
-    readChallenge(6);
-  }, []);
+    readChallenge(router.query.id);
+  }, [router.query.id]);
 
   if (reading) {
     return (

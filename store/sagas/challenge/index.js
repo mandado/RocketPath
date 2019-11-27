@@ -3,10 +3,11 @@ import {
 } from 'redux-saga/effects';
 import { Types } from '../../ducks/Challenge';
 import { api } from '../../../services/api';
+import ls from 'local-storage'
 
 function* saveChallenge({ payload }) {
   try { 
-    yield api.put(`/challenges/${payload.id}`, { 
+    yield api.put(`/user/${ls.get('current_user')}/challenges/${payload.id}`, {
       answer: payload.answer
     });
     yield put({
@@ -24,6 +25,7 @@ function* saveChallenge({ payload }) {
 function* readChallenge({ payload: id }) {
   try { 
     const { data } = yield api.get(`/challenges/${id}`);
+    yield api.post(`/user/${ls.get('current_user')}/challenges/${id}`);
     yield put({
       type: Types.SET_CHALLENGE, 
       payload: data,

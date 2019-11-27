@@ -85,7 +85,7 @@ const ConfirmPathInterest = ({ onCancel, affinity }) => (
 
 const pages = ({saveInterests, resetInterests, loginChecked, user = {}, saved}) => {  
   useEffect(()=> {
-    (loginChecked && !saved) && user.affinity !== null && Router.push('/path');
+    loginChecked && !saved && user.affinity !== null && Router.push('/path');
   },[loginChecked, saved]);
 
   if (!loginChecked) {
@@ -100,7 +100,7 @@ const pages = ({saveInterests, resetInterests, loginChecked, user = {}, saved}) 
 }
 
 const mapStateToProps = state => ({
-  user: state.Login.user.user,
+  user: state.Login.user,
   loginChecked: state.Login.checked,
   saved: state.Interests.saved
 });

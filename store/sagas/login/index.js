@@ -9,7 +9,8 @@ import ls from 'local-storage'
 function* submitLogin(action) {
   try {
     const { payload } = action;
-    const { data:{ user, token:{token}} = {}, status } = yield api.post('/login', payload);
+    const response = yield api.post('/login', payload);
+    const  { data:{ user, token:{token}} = {}, status } = response;
     if(status === 200){
      ls.set('token', token);
      ls.set('current_user', user.id);
@@ -63,7 +64,7 @@ function* getCurrentUser() {
     }
     yield put({type: Types.RESPONSE, payload: { checked: true}});
   } catch (error) {
-    console.log(error)
+    console.log(error, 'ERROR')
     yield put({type: Types.RESPONSE, payload: { checked: true}});
   }
 }

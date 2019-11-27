@@ -4,27 +4,20 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Creators } from '../store/ducks/Path';
 
-const groupBy = (list, keyGetter) => {
-  const map = new Map();
-  list.forEach((item) => {
-       const key = keyGetter(item);
-       const collection = map.get(key);
-       if (!collection) {
-           map.set(key, [item]);
-       } else {
-           collection.push(item);
-       }
-  });
-  return map;
-}
+const groupBy = function(xs = [], key) {
+  return xs.reduce(function(rv, x) {
+    (rv[x[key]] = rv[x[key]] || []).push(x);
+    return rv;
+  }, {});
+};
 
-const pages = ({ loadPaths, challenges = [], user }) => {
+const pages = ({ loadPaths, challenges, user }) => {
   useState(()=>{
     loadPaths();
   }, []);
   
-  const grouped = groupBy(challenges, chall => chall.affinity).get(user.affinity);
-  console.log(grouped);
+  const grouped = groupBy(challenges, 'affinity')[user.affinity];
+  const groupedLvl = groupBy(grouped, 'level') || [];
   return (
     <div className="mb-64">
       <h2 className="text-5xl mb-10 text-brown font-bold">
@@ -32,19 +25,28 @@ const pages = ({ loadPaths, challenges = [], user }) => {
       </h2>
       
       <div className="flex flex-wrap justify-center">
-
-          <div className="point-path start-path relative w-20 bg-blueteal h-20 flex items-center justify-center rounded-full p-4">
-            <Tooltip placement="right" trigger="click" tooltip="Hi there!">
-              <img src="/images/monitor.png" />
-            </Tooltip>
-          </div>
-
-        <div className="w-full justify-center flex">
-          <button className="justify-center flex z-10 point-path relative start-button border-blueteal border-4 uppercase font-semibold text-lg text-blueteal px-4 py rounded-full">
-            Começar
-          </button>
-        </div>
-
+        {Object.keys(groupedLvl).map(lvl => {
+          return(
+            <div className="level-holder" key={lvl}>
+              <span className="level-name">Level</span>
+              <div className="holder flex">
+                {groupedLvl[lvl].map(challange => {
+                  console.log(challange)
+                  return(
+                    <div className="challenge">
+                      <Tooltip placement="right" trigger="hover" tooltip="Hi there!">
+                        <img src="/images/monitor.png" />
+                      </Tooltip>
+                    </div>
+                  )
+                })}
+              </div>
+              
+              
+            </div>
+        )})}
+        
+{/*         
         <div className="fork-path relative">
           <div className="point-path left-branch relative w-20 h-20 flex items-center justify-center rounded-full p-4">
             <img src="/images/hospital-bedroom.png" />
@@ -55,7 +57,7 @@ const pages = ({ loadPaths, challenges = [], user }) => {
           <div className="point-path right-branch relative w-20 h-20 flex items-center justify-center rounded-full p-4">
             <img src="/images/blood-drop-type-positive.png" />
           </div>
-        </div>
+        </div> */}
       </div>
 
       <button className="text-blueteal uppercase text-5xl mt-20">

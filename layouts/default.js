@@ -3,16 +3,16 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import posed from 'react-pose';
-import Modal from '../components/Modal';
-import Input from '../components/Input';
-import Select from '../components/Select';
+import Header from '../components/Header';
 import RocketSvg from '../components/icons/Rocket';
 import MountainsSvg from '../components/icons/Mountains';
-import { Actions } from '../store/ducks/modal/index';
+
+import SingupModal from '../components/SingupModal';
+import LoginModal from '../components/LoginModal';
 
 const Rocket = posed.div({
   visible: { 
-    x: '120%', 
+    x: 2400, 
     y: -760,
     transition: {
       duration: 350,
@@ -82,7 +82,7 @@ function Layout({ children }) {
   const dispatch = useDispatch();
   const loginModal = useSelector(state => state.modal.loginModal);
   const signupModal = useSelector(state => state.modal.signupModal);
-  const { toggleLoginModal, toggleSignupModal } = Actions;
+
 
   const poseClass = toggled ? (routeEffectsState[router.pathname] || 'content') : 'hidden';
 
@@ -112,29 +112,7 @@ function Layout({ children }) {
             <span className="font-bold">tech</span> 
           </h4>
         </span>
-
-        {
-          logged ? (
-            <div className="flex items-center">
-              <a href="#" className="text-xl mr-4 color-brown">Rank</a>
-              <img src="/images/avatar.png" className="w-20" />
-              <div className="color-brown ml-2">
-                <p className="text-xl font-medium leading-none mb-1">Felipe Ramos</p>
-                <p className="text-md font-light leading-none">
-                  14 challenges
-                </p>
-                <button onClick={() => setLogged(false)} type="button" className="text-sm text-blueteal mt-1 font-light leading-none">
-                  Sair
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div className="flex">
-              <button onClick={() => dispatch(toggleLoginModal(true))} className="text-xl color-brown">Entrar</button>
-              <button onClick={() => dispatch(toggleSignupModal(true))} className="text-xl color-brown ml-12">Cadastrar</button>
-            </div>
-          )
-        }
+        <Header />
       </nav>
 
       <div className="content z-10 relative flex flex-wrap justify-center text-center items-center color-brown h-full w-full">
@@ -148,57 +126,9 @@ function Layout({ children }) {
         <MountainsSvg />
       </Mountains>
         
-      {loginModal && (
-        <Modal onClose={() => dispatch(toggleLoginModal(false))}>
-          <h4 className="color-brown">
-            <span className="text-3xl leading-none mb-2 block">Ei o/</span>
-            <span className="text-xl leading-none">
-              Falta pouco para descobrir <br/> o seu caminho!
-            </span>
+      {loginModal && <LoginModal/>}
 
-            <div className="mt-10 sign-in m-auto">
-              <Input placeholder="EMAIL" />
-              <br/>
-              <Input placeholder="SENHA" />
-              <div className="mt-8 text-center">
-                <button type="button" onClick={loginUser} className="uppercase text-lg bg-blueteal hover:bg-blueteal-ligter text-white font-medium hover:text-white py-1 px-12 mb-8 mt-4 border-4 border-blueteal hover:border-transparent">
-                  Entrar
-                </button>
-              </div>
-            </div>
-          </h4>
-        </Modal>
-      )}
-
-      {signupModal && (
-        <Modal onClose={() => dispatch(toggleSignupModal(false))}>
-          <h4 className="color-brown">
-            <span className="text-3xl leading-none mb-2 block">Ei o/</span>
-            <span className="text-xl leading-none">
-              Falta pouco para descobrir <br/> o seu caminho!
-            </span>
-
-            <div className="mt-10 sign-in m-auto">
-              <Input placeholder="NOME" />
-              <br/>
-              <Input placeholder="EMAIL" />
-              <br/>
-              <Select options={[
-                { value: 'EnsinoFundamental', text: 'Ensino Fundamental' },
-                { value: 'EnsinoMedio', text: 'Ensino Médio' },
-                { value: 'EnsinoSuperior', text: 'Ensino Superior' },
-              ]} />
-              <br/>
-              <Input placeholder="SENHA" />
-              <div className="mt-8 text-center">
-                <button type="button" onClick={signupUser} className="uppercase text-lg bg-blueteal hover:bg-blueteal-ligter text-white font-medium hover:text-white py-1 px-12 mb-8 mt-4 border-4 border-blueteal hover:border-transparent">
-                  Cadastrar
-                </button>
-              </div>
-            </div>
-          </h4>
-        </Modal>
-      )}
+      {signupModal && <SingupModal/>}
     </>
   )
 }

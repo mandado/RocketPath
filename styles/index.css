@@ -32,6 +32,7 @@ body {
 .navbar {
   z-index: 3;
   position: relative;
+  height: 160px;
 }
 
 .content.h-full {
@@ -39,14 +40,25 @@ body {
 }
 
 .rocket {
-  left: -150%;
+  left: -2600px;
 }
 
 .mountains {
   bottom: 0;
 }
 
-.landig-text {
+.input-holder {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.input-holder span {
+  position: absolute;
+  top: 100%;
+  color: #ff5500;
+  font-size: 0.8rem;
+  line-height: 2rem;
 }
 
 .modal {

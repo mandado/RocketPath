@@ -1,8 +1,9 @@
 
 import React, { useEffect, useState} from 'react';
-import { useDispatch } from 'react-redux';
-import { Actions } from '../store/ducks/modal/index';
 import posed from 'react-pose';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Creators } from '../store/ducks/modal';
 
 const TextWrapper = posed.div({
   visible: {
@@ -21,18 +22,16 @@ const TextWrapper = posed.div({
   }
 });
 
-export default function index() {
+const index = ({ token, toggleLoginModal }) => {
   const [visible, setVisible] = useState(false);
-  const {
-    toggleLoginModal,
-  } = Actions;
-  const dispatch = useDispatch();
-  
-  const openLoginModal = () => dispatch(toggleLoginModal(true));
-
   useEffect(()=> {
     setVisible(true);
   }, []);
+
+  const goToInterests = () => {
+    if(!token)
+      toggleLoginModal(true);
+  }
 
   return (
     <TextWrapper className="pb-64 text-center" pose={visible && 'visible'}>
@@ -41,11 +40,31 @@ export default function index() {
       </p>
 
       <button 
-        className="uppercase text-2xl bg-transparent hover:bg-blueteal text-blueteal font-medium hover:text-white py-2 px-16 mt-8 border-4 border-blueteal hover:border-transparent"
-        onClick={openLoginModal}
+        className="
+          uppercase
+          text-2xl
+          bg-transparent
+          hover:bg-blueteal
+          text-blueteal font-medium
+          hover:text-white
+          py-2 px-16 mt-8
+          border-4
+          border-blueteal
+          hover:border-transparent
+        "
+        onClick={goToInterests}
       >
         Vamos lá
       </button>
     </TextWrapper>
   );
 };
+
+const mapStateToProps = state => ({
+  token: state.Login.token,
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(Creators, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(index);

@@ -141,6 +141,25 @@ body {
   right: -42px;
 }
 
+/* flow */
+
+.flow {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.flow:not(:last-child)::after {
+  @apply bg-yellowOption;
+  display: flex;
+  justify-content: center;
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 42px;
+  bottom: -20px;
+}
+
 .tooltip-container {
   margin: 1.5rem !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);

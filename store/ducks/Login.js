@@ -7,7 +7,8 @@ export const Types = {
   SUBMIT_LOGIN: 'header/SUBMIT_LOGIN',
   LOGOUT: 'header/LOGOUT',
   SUBMIT_SIGNUP: 'header/SUBMIT_SIGNUP',
-  RESPONSE: 'header/RESPONSE'
+  RESPONSE: 'header/RESPONSE',
+  CHECK_LOGIN: 'header/CHECK_LOGIN',
 };
 
 export const Creators = {
@@ -19,6 +20,9 @@ export const Creators = {
   },
   logout() {
     return { type: Types.LOGOUT };
+  },
+  checkLogin() {
+    return { type: Types.CHECK_LOGIN };
   }
 };
 
@@ -30,6 +34,8 @@ const reducer = (initialState = STATE, { type, payload }) => {
       return { ...initialState, loading: true };
     case Types.RESPONSE:
       return {  ...payload, loading: false };
+    case Types.CHECK_LOGIN:
+      return { ...initialState, loading: true };
     default:
       return initialState;
   }

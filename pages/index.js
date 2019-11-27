@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState} from 'react';
 import posed from 'react-pose';
+import Router from 'next/router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Creators } from '../store/ducks/modal';
@@ -31,6 +32,8 @@ const index = ({ token, toggleLoginModal }) => {
   const goToInterests = () => {
     if(!token)
       toggleLoginModal(true);
+    else
+    Router.push('/interests')
   }
 
   return (

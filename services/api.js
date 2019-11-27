@@ -20,5 +20,5 @@ const buildAxiosService = (baseURL, skipInterceptor = false) => {
   return service;
 };
 
-export const api = buildAxiosService('https://rocket-path.herokuapp.com', true);
+export const api = buildAxiosService('https://rocket-path.herokuapp.com');
 

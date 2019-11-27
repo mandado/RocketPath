@@ -29,7 +29,7 @@ const SelectInterests = ({ onSubmit }) => {
       interest_draft[index].checked = false;
       setNextAvailable(true);
     }
-    if(checkedInterests.length> 1){
+    if(checkedInterests.length === 3){
       setNextAvailable(false);
     }
     setInterests(interest_draft);
@@ -51,10 +51,12 @@ const SelectInterests = ({ onSubmit }) => {
           </div>
         ))}
       </div>
-
-      <button disabled={nextAvailable} onClick={onSubmit} className="text-blueteal uppercase text-5xl mt-20">
-        Avançar
-      </button>
+      {!nextAvailable && (
+        <button disabled={nextAvailable} onClick={onSubmit} className="text-blueteal uppercase text-5xl mt-20">
+          Avançar
+        </button>
+      )}
+      
     </>
   )
 };

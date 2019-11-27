@@ -1,11 +1,13 @@
 const STATE = {
   loading: false,
+  reading: true,
   saved: false,
   challenge: null,
 };
 
 export const Types = {
   SAVE_CHALLENGE: 'challenge/SAVE',
+  SET_CHALLENGE: 'challenge/SET',
   READ_CHALLENGE: 'challenge/READ',
   SAVED_CHALLENGE: 'challenge/SAVED',
 };
@@ -26,7 +28,9 @@ const reducer = (initialState = STATE, { type, payload }) => {
     case Types.SAVED_CHALLENGE:
       return { ...initialState, saved: true, loading: false };
     case Types.READ_CHALLENGE:
-      return { ...initialState, loading: true, challenge: payload };
+      return { ...initialState, reading: true };
+    case Types.SET_CHALLENGE:
+      return { ...initialState, reading: false, challenge: payload };
     default:
       return initialState;
   }

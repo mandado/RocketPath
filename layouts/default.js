@@ -28,6 +28,14 @@ const Rocket = posed.div({
       ease: 'linear'
     } 
   }, 
+  path: { 
+    x: '170%', 
+    y: -760,
+    transition: {
+      duration: 350,
+      ease: 'linear'
+    } 
+  }, 
 });
 
 const Mountains = posed.div({
@@ -49,9 +57,23 @@ const Mountains = posed.div({
       duration: 300,
       ease: 'linear'
     } 
-  }, 
+  },
+  path: { 
+    x: '55%', 
+    y: 100,
+    z: 10,
+    transition: {
+      duration: 300,
+      ease: 'linear'
+    } 
+  },
 });
 
+const routeEffectsState = {
+  '/': 'visible',
+  '/path': 'path',
+  '/question': 'path',
+};
 
 function Layout({ children }) {
   const [logged, setLogged] = useState(false);
@@ -61,6 +83,8 @@ function Layout({ children }) {
   const loginModal = useSelector(state => state.modal.loginModal);
   const signupModal = useSelector(state => state.modal.signupModal);
 
+
+  const poseClass = toggled ? (routeEffectsState[router.pathname] || 'content') : 'hidden';
 
   const loginUser = () => {
     dispatch(toggleLoginModal(false));
@@ -95,10 +119,10 @@ function Layout({ children }) {
         {children}
       </div>
 
-      <Rocket className="rocket absolute" pose={toggled ? (router.pathname !== '/' ? 'content' : 'visible') : 'hidden'}>
+      <Rocket className="rocket absolute" pose={poseClass}>
         <RocketSvg />
       </Rocket>
-      <Mountains className="mountains absolute" pose={toggled ? (router.pathname !== '/' ? 'content' : 'visible') : 'hidden'}>
+      <Mountains className="mountains absolute" pose={poseClass}>
         <MountainsSvg />
       </Mountains>
         

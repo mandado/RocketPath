@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Modal from '../components/Modal';
 import Input from '../components/Input';
 import Select from '../components/Select';
+import Header from '../components/Header';
 import RocketSvg from '../components/icons/Rocket';
 import MountainsSvg from '../components/icons/Mountains';
 import { useRouter } from 'next/router';
@@ -86,29 +87,7 @@ function Layout({ children }) {
             <span className="font-bold">tech</span> 
           </h4>
         </span>
-
-        {
-          logged ? (
-            <div className="flex items-center">
-              <a href="#" className="text-xl mr-4 color-brown">Rank</a>
-              <img src="/images/avatar.png" className="w-20" />
-              <div className="color-brown ml-2">
-                <p className="text-xl font-medium leading-none mb-1">Felipe Ramos</p>
-                <p className="text-md font-light leading-none">
-                  14 challenges
-                </p>
-                <button onClick={() => setLogged(false)} type="button" className="text-sm text-blueteal mt-1 font-light leading-none">
-                  Sair
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div className="flex">
-              <button onClick={() => setModalLogin(true)} className="text-xl color-brown">Entrar</button>
-              <button onClick={() => setModalSignup(true)} className="text-xl color-brown ml-12">Cadastrar</button>
-            </div>
-          )
-        }
+        <Header />
       </nav>
 
       <div className="content z-10 relative flex flex-wrap justify-center text-center items-center color-brown h-full w-full">

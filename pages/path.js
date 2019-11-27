@@ -40,7 +40,7 @@ const pages = ({ loadPaths, challenges, user }) => {
                   const bgBadgeClass = userChallengesId.includes(challenge.id) ? `bg-green-500` : `bg-blueteal hover:bg-yellowOption`;
                       
                   return(
-                    <Link href={!userChallengesId.includes(challenge.id) ? `/challenge/${challenge.id}` : '/#'}>
+                    <Link href={!userChallengesId.includes(challenge.id) ? `/challenge?id=${challenge.id}` : '/#'}>
                       <a className={`flex justify-center flex-wrap ${textClass}`}>
                         <div className={`challenge ${bgBadgeClass} p-6 mx-4 rounded-full`}>
                           <img src="/images/monitor.png" />

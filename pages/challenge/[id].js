@@ -46,8 +46,11 @@ function Question({ saveChallenge, readChallenge, challenge, reading }) {
   };
 
   useEffect(() => {
-    readChallenge(router.query.id);
-  }, [router.query.id]);
+    if (router.query.id) {
+      console.log(router.query);
+      readChallenge(router.query.id);
+    }
+  }, [router.query]);
 
   if (reading) {
     return (

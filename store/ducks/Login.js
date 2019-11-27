@@ -1,6 +1,9 @@
 const STATE = {
   token: undefined,
   loading: false,
+  user: {
+    affinity: null
+  }
 };
 
 export const Types = {

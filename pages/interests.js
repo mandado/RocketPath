@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Creators } from '../store/ducks/Login';
+import { Creators } from '../store/ducks/Interests';
 import Router from 'next/router';
 
 const SelectInterests = ({ onSubmit }) => {
@@ -46,30 +46,29 @@ const SelectInterests = ({ onSubmit }) => {
       <div className="flex flex-wrap -mb-6 -mx-4">
         {interests.map( (interest) => (
           <div className="w-3/12 px-4 mb-6 block" key={interest.id}>
-            <button onClick={() => onOptionClick(interest)} className={`shadow ${ !interest.checked ? 'bg-white text-brown' : 'bg-blueteal text-white'} rounded-lg p-6 text-2xl w-full`}>
+            <button onClick={() => onOptionClick(interest)} className={`shadow ${ !interest.checked ? 'bg-white text-brown' : 'bg-blueteal text-white'}  rounded-lg p-6 text-2xl w-full`}>
               {interest.name}
             </button>
           </div>
         ))}
       </div>
-
-      <button disabled={nextAvailable} onClick={onSubmit} className="text-blueteal uppercase text-5xl mt-20">
+      <button disabled={nextAvailable} onClick={() => onSubmit(interests)} className={`${nextAvailable && 'disabled:text-gray-100' || 'text-blueteal' } uppercase text-5xl mt-20`}>
         Avançar
       </button>
     </>
   )
 };
 
-const ConfirmPathInterest = ({ onCancel }) => (
+const ConfirmPathInterest = ({ onCancel, affinity }) => (
   <>
     <h2 className="text-5xl mb-24 text-brown font-bold">
-      Hm… Que tal seguir o<br/> caminho Health-Tech?
+      Hm… Que tal seguir o<br/> caminho {affinity}?
     </h2>
 
 
     <div className="flex block -mx-4">
       <div className="w-1/2 px-4">
-        <button className="shadow bg-blueteal rounded-lg p-4 text-2xl text-white w-full">
+        <button onClick={() => Router.push('/path')} className="shadow bg-blueteal rounded-lg p-4 text-2xl text-white w-full">
           Sim
         </button>
       </div>
@@ -82,21 +81,26 @@ const ConfirmPathInterest = ({ onCancel }) => (
   </>
 )
 
-const pages = ({loginChecked, user = {}}) => {
-  const [toggle, setToggle] = useState(true);
+const pages = ({saveInterests, resetInterests, loginChecked, user = {}, saved}) => {  
   useEffect(()=> {
-    loginChecked && user.affinity !== null && Router.push('/path');
-  },[loginChecked]);
+    (loginChecked && !saved) && user.affinity !== null && Router.push('/path');
+  },[loginChecked, saved]);
+
+  if (!loginChecked) {
+    return <div>Carregando....</div>;
+  }
+  
   return (
     <div className="mb-64">
-      {toggle ? <SelectInterests onSubmit={()=> setToggle(false)}/> : <ConfirmPathInterest onCancel={() => setToggle(true)} />}
+      {!saved ? <SelectInterests onSubmit={saveInterests}/> : <ConfirmPathInterest affinity={user.affinity} onCancel={resetInterests} />}
     </div>
   );
 }
 
 const mapStateToProps = state => ({
-  user: state.Login.user,
-  loginChecked: state.Login.checked
+  user: state.Login.user.user,
+  loginChecked: state.Login.checked,
+  saved: state.Interests.saved
 });
 
 const mapDispatchToProps = dispatch =>

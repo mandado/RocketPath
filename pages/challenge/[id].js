@@ -48,12 +48,12 @@ function Question({ saveChallenge, readChallenge, challenge, reading }) {
 
   console.log(router.query);
 
-  useEffect(() => {
-    if (router.query.id) {
-      console.log(router.query);
-      readChallenge(router.query.id);
-    }
-  }, [router]);
+  // useEffect(() => {
+  //   if (router.query.id) {
+  //     console.log(router.query);
+  //     readChallenge(router.query.id);
+  //   }
+  // }, [router]);
 
   if (reading) {
     return (

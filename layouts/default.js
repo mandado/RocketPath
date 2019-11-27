@@ -1,14 +1,14 @@
 import '../styles/index.css';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useSelector, useDispatch } from 'react-redux';
+import posed from 'react-pose';
 import Modal from '../components/Modal';
 import Input from '../components/Input';
 import Select from '../components/Select';
 import RocketSvg from '../components/icons/Rocket';
 import MountainsSvg from '../components/icons/Mountains';
-import { useRouter } from 'next/router';
-
-import posed from 'react-pose';
-
+import { Actions } from '../store/ducks/modal/index';
 
 const Rocket = posed.div({
   visible: { 
@@ -54,19 +54,21 @@ const Mountains = posed.div({
 
 
 function Layout({ children }) {
-  const [modalLogin, setModalLogin] = useState(false);
-  const [modalSignup, setModalSignup] = useState(false);
   const [logged, setLogged] = useState(false);
   const [toggled, setToggled] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
+  const loginModal = useSelector(state => state.modal.loginModal);
+  const signupModal = useSelector(state => state.modal.signupModal);
+  const { toggleLoginModal, toggleSignupModal } = Actions;
 
   const loginUser = () => {
-    setModalLogin(false);
+    dispatch(toggleLoginModal(false));
     setLogged(true);
   };
 
   const signupUser = () => {
-    setModalSignup(false);
+    dispatch(toggleSignupModal(false));
     setLogged(true);
   };
 
@@ -104,8 +106,8 @@ function Layout({ children }) {
             </div>
           ) : (
             <div className="flex">
-              <button onClick={() => setModalLogin(true)} className="text-xl color-brown">Entrar</button>
-              <button onClick={() => setModalSignup(true)} className="text-xl color-brown ml-12">Cadastrar</button>
+              <button onClick={() => dispatch(toggleLoginModal(true))} className="text-xl color-brown">Entrar</button>
+              <button onClick={() => dispatch(toggleSignupModal(true))} className="text-xl color-brown ml-12">Cadastrar</button>
             </div>
           )
         }
@@ -122,8 +124,8 @@ function Layout({ children }) {
         <MountainsSvg />
       </Mountains>
         
-      {modalLogin && (
-        <Modal onClose={() => setModalLogin(false)}>
+      {loginModal && (
+        <Modal onClose={() => dispatch(toggleLoginModal(false))}>
           <h4 className="color-brown">
             <span className="text-3xl leading-none mb-2 block">Ei o/</span>
             <span className="text-xl leading-none">
@@ -144,8 +146,8 @@ function Layout({ children }) {
         </Modal>
       )}
 
-      {modalSignup && (
-        <Modal onClose={() => setModalSignup(false)}>
+      {signupModal && (
+        <Modal onClose={() => dispatch(toggleSignupModal(false))}>
           <h4 className="color-brown">
             <span className="text-3xl leading-none mb-2 block">Ei o/</span>
             <span className="text-xl leading-none">

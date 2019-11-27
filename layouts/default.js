@@ -72,6 +72,7 @@ const Mountains = posed.div({
 const routeEffectsState = {
   '/': 'visible',
   '/path': 'path',
+  '/question': 'path',
 };
 
 function Layout({ children }) {

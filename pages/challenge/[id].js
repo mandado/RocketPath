@@ -5,6 +5,19 @@ import { connect } from 'react-redux';
 import { Creators } from '../../store/ducks/Challenge';
 import Router, { useRouter } from 'next/router';
 
+const shuffle = function(array) {
+  var arrayCopy = array;
+  var i = arrayCopy.length, j, temp;
+  if ( i == 0 ) return array;
+  while ( --i ) {
+     j = Math.floor( Math.random() * ( i + 1 ) );
+     temp = arrayCopy[i];
+     arrayCopy[i] = arrayCopy[j];
+     arrayCopy[j] = temp;
+  }
+  return arrayCopy;
+}
+
 function Question({ saveChallenge, readChallenge, challenge, reading }) {
   const [blocks, setBlocks] = useState([]);
   const router = useRouter();
@@ -50,7 +63,7 @@ function Question({ saveChallenge, readChallenge, challenge, reading }) {
 
           <div className="w-full mb-4 h-64 overflow-y-scroll">
             {
-              challenge.answers.data.map(question => {
+              shuffle(challenge.answers.data).map(question => {
                 return (
                   <div className="w-full mb-4">
                     <button disabled={isSelected(question)} onClick={() => addBlock(question)} className={`border-2 ${isSelected(question) ? 'disabled:border-gray-300 text-gray-300' : 'border-yellowOption hover:bg-yellowOption hover:text-white text-yellowOption'} lg:w-64 px-4 py-2`}>
